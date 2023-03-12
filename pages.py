@@ -192,19 +192,21 @@ class EmailInboxPage:
 
     def wait_for_email_list(self):
         # Wait for the email list to appear
-        time.sleep(10)
+        WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.ID, "email_list")))
 
     def click_verification_email(self):
         # Click on the verification email.
-        verification_email = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//tbody[@id='email_list']//td[contains(text(),'info@elevatus.io ')]")))
+        verification_email = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//tbody[@id='email_list']//td[contains(text(),'info@elevatus.io')]")))
         verification_email.click()
 
     def click_verification_link(self):
         # Click on the verification link in the email.
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
+        self.driver.execute_script("window.scrollBy(0, window.innerHeight/2);")
         verification_link = WebDriverWait(self.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//a[contains(text(), 'Click Here')]")))
         verification_link.click()
-        time.sleep(5)
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
 
 class ApplyForAJob:
 
@@ -252,14 +254,11 @@ class ApplyForAJob:
         build_profile_page = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.BUILD_PROFILE_PAGE))
         return build_profile_page.text
     def click_fill_in_manually(self):
-        time.sleep(5)
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
         self.driver.execute_script("window.scrollBy(0, window.innerHeight/2);")
-        time.sleep(2)
-
-        # click on fill manually button
-        fill_manually = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.FILL_MANUALLY))
+        WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(self.FILL_MANUALLY))
+        fill_manually = self.driver.find_element(*self.FILL_MANUALLY)
         fill_manually.click()
-        time.sleep(2)
 
     def click_jobs_button(self):
         # click on job button on dashboard.
@@ -290,12 +289,12 @@ class ApplyForAJob:
 
     def click_apply_button(self):
         self.driver.execute_script("window.scrollTo(0, 1000)")
-        time.sleep(5)
+        time.sleep(3)
 
         # click on apply button.
         apply_button = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.APPLY_FOR_JOB))
         apply_button.click()
-        time.sleep(5)
+        WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
 
 
     def submit_cv_page(self):
@@ -308,7 +307,7 @@ class ApplyForAJob:
         description_field.send_keys("This is for testing")
 
         # Select a random date and select it from date picker
-        year = str(random.randint(1990, 2015))
+        year = str(random.randint(1990, 2000))
         month = str(random.randint(1, 12)).zfill(2)
         day = str(random.randint(1, 28)).zfill(2)
         date = f"{year}-{month}-{day}"
@@ -332,7 +331,7 @@ class ApplyForAJob:
         address_field = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.ADDRESS_FIELD))
         address_field.send_keys("This is testing")
         self.driver.execute_script("window.scrollTo(0, 250)")
-        time.sleep(5)
+        time.sleep(2)
 
         # type city
         city_field = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.CITY_FIELD))
@@ -343,11 +342,11 @@ class ApplyForAJob:
         country_dropdown.click()
         country_dropdown_value = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.COUNTRY_DROPDOWN_VALUE))
         country_dropdown_value.click()
-        time.sleep(5)
+        time.sleep(2)
 
         # select job type from dropdown
         self.driver.execute_script("window.scrollTo(570, 688)")
-        time.sleep(5)
+        time.sleep(3)
         job_type_dropdown = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.JOB_TYPE_DROPDOWN))
         job_type_dropdown.click()
         job_type_dropdown_value = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.JOB_TYPE_VALUE))
@@ -371,18 +370,18 @@ class ApplyForAJob:
         skill_set.send_keys(Keys.ENTER)
         time.sleep(2)
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(5)
+        time.sleep(3)
 
         # click on submit button to submit application.
         submit_apply_button = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.SUBMIT_AND_APPLY_BUTTON))
         submit_apply_button.click()
-        time.sleep(10)
+        time.sleep(2)
 
 
     def assert_button_is_disabled(self):
         time.sleep(2)
         self.driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(5)
+        time.sleep(2)
         applied_button = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.APPLIED_BUTTON))
         assert not applied_button.is_enabled(), 'The button should be disabled.'
 

@@ -253,24 +253,27 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
 }
 </script>
     <h1>report.html</h1>
-    <p>Report generated on 12-Mar-2023 at 21:55:07 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
+    <p>Report generated on 13-Mar-2023 at 02:53:19 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a> v3.2.0</p>
     <h2>Environment</h2>
     <table id="environment">
+      <tr>
+        <td>JAVA_HOME</td>
+        <td>C:\Program Files\Java\jdk1.8.0_202</td></tr>
       <tr>
         <td>Packages</td>
         <td>{"pluggy": "1.0.0", "pytest": "7.2.2"}</td></tr>
       <tr>
         <td>Platform</td>
-        <td>Windows-10-10.0.19045-SP0</td></tr>
+        <td>Windows-10-10.0.21996-SP0</td></tr>
       <tr>
         <td>Plugins</td>
         <td>{"html": "3.2.0", "metadata": "2.0.4"}</td></tr>
       <tr>
         <td>Python</td>
-        <td>3.11.0</td></tr></table>
+        <td>3.11.2</td></tr></table>
     <h2>Summary</h2>
-    <p>2 tests ran in 190.77 seconds. </p>
-    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">1 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">1 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
+    <p>2 tests ran in 105.90 seconds. </p>
+    <p class="filter" hidden="true">(Un)check the boxes to filter the results.</p><input checked="true" class="filter" data-test-result="passed" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="passed">2 passed</span>, <input checked="true" class="filter" data-test-result="skipped" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="skipped">0 skipped</span>, <input checked="true" class="filter" data-test-result="failed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="failed">0 failed</span>, <input checked="true" class="filter" data-test-result="error" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="error">0 errors</span>, <input checked="true" class="filter" data-test-result="xfailed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xfailed">0 expected failures</span>, <input checked="true" class="filter" data-test-result="xpassed" disabled="true" hidden="true" name="filter_checkbox" onChange="filterTable(this)" type="checkbox"/><span class="xpassed">0 unexpected passes</span>
     <h2>Results</h2>
     <table id="results-table">
       <thead id="results-table-head">
@@ -281,20 +284,20 @@ function filterTable(elem) { // eslint-disable-line no-unused-vars
           <th class="sortable links" col="links">Links</th></tr>
         <tr hidden="true" id="not-found-message">
           <th colspan="4">No results found. Try to check the filters</th></tr></thead>
-      <tbody class="failed results-table-row">
-        <tr>
-          <td class="col-result">Failed</td>
-          <td class="col-name">test_cases.py::test_applyForJob</td>
-          <td class="col-duration">95.70</td>
-          <td class="col-links"></td></tr>
-        <tr>
-          <td class="extra" colspan="4">
-            <div class="log">driver = &lt;selenium.webdriver.chrome.webdriver.WebDriver (session=&quot;1bba6194f2a3c595d2f71fc53bae79ad&quot;)&gt;<br/><br/>    def test_applyForJob(driver):<br/>        apply_for_job = ApplyForAJob(driver)<br/>    <br/>    <br/>        # assert that we are on right page.<br/>        build_page_message = apply_for_job.buid_profile()<br/>        assert build_page_message == &quot;Building your profile&quot;<br/>    <br/>        # click on fill page manually.<br/>        apply_for_job.click_fill_in_manually()<br/>    <br/>        # Click on job button on dashboad<br/>        apply_for_job.click_jobs_button()<br/>    <br/>        # fill searchbar to find relative job.<br/>        apply_for_job.fill_search_form(&quot;QA&quot;)<br/>    <br/>        # open job link which we get from search result.<br/>        apply_for_job.open_search_results()<br/>    <br/>        # Click on apply button from job description.<br/>        apply_for_job.click_apply_button()<br/>    <br/>        # assert that we are on submit cv page.<br/>        submit_cv_message = apply_for_job.submit_cv_page()<br/>        assert submit_cv_message == &quot;Submit Your CV&quot;<br/>    <br/>    <br/>        # Fill form and submit the application.<br/>        apply_for_job.submit_profile_and_apply()<br/>    <br/>        # assert applied button is not enabled.<br/>&gt;       apply_for_job.assert_button_is_disabled()<br/><br/>test_cases.py:105: <br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/>pages.py:386: in assert_button_is_disabled<br/>    applied_button = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.APPLIED_BUTTON))<br/>_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ <br/><br/>self = &lt;selenium.webdriver.support.wait.WebDriverWait (session=&quot;1bba6194f2a3c595d2f71fc53bae79ad&quot;)&gt;<br/>method = &lt;function visibility_of_element_located.&lt;locals&gt;._predicate at 0x000002D5EC2FACA0&gt;, message = &#x27;&#x27;<br/><br/>    def until(self, method, message: str = &quot;&quot;):<br/>        &quot;&quot;&quot;Calls the method provided with the driver as an argument until the \<br/>        return value does not evaluate to ``False``.<br/>    <br/>        :param method: callable(WebDriver)<br/>        :param message: optional message for :exc:`TimeoutException`<br/>        :returns: the result of the last call to `method`<br/>        :raises: :exc:`selenium.common.exceptions.TimeoutException` if timeout occurs<br/>        &quot;&quot;&quot;<br/>        screen = None<br/>        stacktrace = None<br/>    <br/>        end_time = time.monotonic() + self._timeout<br/>        while True:<br/>            try:<br/>                value = method(self._driver)<br/>                if value:<br/>                    return value<br/>            except self._ignored_exceptions as exc:<br/>                screen = getattr(exc, &quot;screen&quot;, None)<br/>                stacktrace = getattr(exc, &quot;stacktrace&quot;, None)<br/>            time.sleep(self._poll)<br/>            if time.monotonic() &gt; end_time:<br/>                break<br/>&gt;       raise TimeoutException(message, screen, stacktrace)<br/><span class="error">E       selenium.common.exceptions.TimeoutException: Message: </span><br/><span class="error">E       Stacktrace:</span><br/><span class="error">E       Backtrace:</span><br/><span class="error">E       	(No symbol) [0x002CDCE3]</span><br/><span class="error">E       	(No symbol) [0x002639D1]</span><br/><span class="error">E       	(No symbol) [0x00174DA8]</span><br/><span class="error">E       	(No symbol) [0x001A019F]</span><br/><span class="error">E       	(No symbol) [0x001A03AB]</span><br/><span class="error">E       	(No symbol) [0x001CEE62]</span><br/><span class="error">E       	(No symbol) [0x001BAF14]</span><br/><span class="error">E       	(No symbol) [0x001CD57C]</span><br/><span class="error">E       	(No symbol) [0x001BACC6]</span><br/><span class="error">E       	(No symbol) [0x00196F68]</span><br/><span class="error">E       	(No symbol) [0x001980CD]</span><br/><span class="error">E       	GetHandleVerifier [0x00543832+2506274]</span><br/><span class="error">E       	GetHandleVerifier [0x00579794+2727300]</span><br/><span class="error">E       	GetHandleVerifier [0x0057E36C+2746716]</span><br/><span class="error">E       	GetHandleVerifier [0x00376690+617600]</span><br/><span class="error">E       	(No symbol) [0x0026C712]</span><br/><span class="error">E       	(No symbol) [0x00271FF8]</span><br/><span class="error">E       	(No symbol) [0x002720DB]</span><br/><span class="error">E       	(No symbol) [0x0027C63B]</span><br/><span class="error">E       	BaseThreadInitThunk [0x768F00F9+25]</span><br/><span class="error">E       	RtlGetAppContainerNamedObjectPath [0x77357BBE+286]</span><br/><span class="error">E       	RtlGetAppContainerNamedObjectPath [0x77357B8E+238]</span><br/><span class="error">E       	(No symbol) [0x00000000]</span><br/><br/>venv\Lib\site-packages\selenium\webdriver\support\wait.py:95: TimeoutException<br/></div></td></tr></tbody>
       <tbody class="passed results-table-row">
         <tr>
           <td class="col-result">Passed</td>
           <td class="col-name">test_cases.py::test_signup</td>
-          <td class="col-duration">94.68</td>
+          <td class="col-duration">51.54</td>
+          <td class="col-links"></td></tr>
+        <tr>
+          <td class="extra" colspan="4">
+            <div class="empty log">No log output captured.</div></td></tr></tbody>
+      <tbody class="passed results-table-row">
+        <tr>
+          <td class="col-result">Passed</td>
+          <td class="col-name">test_cases.py::test_applyForJob</td>
+          <td class="col-duration">50.13</td>
           <td class="col-links"></td></tr>
         <tr>
           <td class="extra" colspan="4">
