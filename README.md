@@ -1,12 +1,17 @@
 # Elevatus
-Automated Web Testing with Selenium and Python
-Automate Elevatus signup page and job application processes. I used guerilla mail service for signup. In start I navigate to guerrilla mail page to get mail address and then I navigate to elevatus web page.
+I use chromedriver-binary==111.0.5563.64.0 for the Task. Either Update chrome browser to this version and relaunch the browser or change the version according yours then run requirment file in terminal.
+Task was to register candidate and then apply for job.
+I used guerilla mail service for signup. In start I navigate to guerrilla mail page to get mail address and then I navigate to elevatus web page. I can perform this with mailinator's API but they are premium and due to short time I just this to complete task.
+
+Important commands:
+pip install -r requirements.txt in your terminal
+pytest --html=report.html
 
 Getting Started
 To get started with this Task, follow these steps:
 
 Clone the repository to your local machine.
-Install the required dependencies by running pip install -r requirements.txt in your terminal.
+Install the required dependencies by running pip install -r requirements.txt in your terminal
 Download and install the latest version of Google Chrome web browser.
 Download and install the corresponding version of ChromeDriver for your Chrome browser.
 Open the config.py file and enter your GuerrillaMail email address and password.
@@ -34,5 +39,5 @@ The following tests are included in the tests folder:
 
 test_signup: tests the website's signup process by filling out the signup form with random data and verifying that the email address received a verification email.
 test_applyForJob: tests the website's job application process by filling out the job application form with random data and verifying that the application was submitted successfully.
-Conclusion
-This project demonstrates how Selenium can be used to automate the testing of a website's signup and job application processes. By creating PageObjects and using them to interact with the website's elements, we can easily create robust and reliable automated tests.
+Conclusion:
+In submit cv page, some fields remain empty because of short time and task was long. Other then that I completed every task.
