@@ -1,7 +1,7 @@
 # Elevatus
 I use chromedriver-binary==111.0.5563.64.0 for the Task. Either Update chrome browser to this version and relaunch the browser or change the version according yours then run requirment file in terminal.
 Task was to register candidate and then apply for job.
-I used guerilla mail service for signup. In start I navigate to guerrilla mail page to get mail address and then I navigate to elevatus web page. I can perform this with mailinator's API but they are premium and due to short time I just this to complete task.
+I used guerilla mail service for signup. In start I navigate to guerrilla mail page to get mail address and then I navigate to elevatus web page. I can perform this with mailinator's API but they are premium and due to short time I just did this to complete task.
 
 Important commands:
 pip install -r requirements.txt in your terminal
