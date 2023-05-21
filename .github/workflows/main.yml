@@ -28,8 +28,8 @@ jobs:
 
     - name: Download ChromeDriver
       run: |
-        CHROME_DRIVER_VERSION=$(google-chrome --version | awk -F ' ' '{print $3}' | awk -F '.' '{print $1}')
-        wget -N https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip
+        CHROME_DRIVER_VERSION="113.0.4615.43"  # Update this with the appropriate ChromeDriver version
+        wget -N "https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip"
         unzip chromedriver_linux64.zip
         chmod +x chromedriver
         sudo mv chromedriver /usr/local/bin/
