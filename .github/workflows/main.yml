@@ -26,6 +26,14 @@ jobs:
       with:
         python-version: 3.x
 
+    - name: Download ChromeDriver
+      run: |
+        CHROME_DRIVER_VERSION=$(google-chrome --version | awk -F ' ' '{print $3}' | awk -F '.' '{print $1}')
+        wget -N https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip
+        unzip chromedriver_linux64.zip
+        chmod +x chromedriver
+        sudo mv chromedriver /usr/local/bin/
+
     - name: Install dependencies
       run: pip install -r requirements.txt
 
