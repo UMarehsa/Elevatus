@@ -13,29 +13,27 @@ jobs:
         shell: bash -l {0}
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2.1.5
-      with:
-        node-version: 16
+      - name: Set up Node.js
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 16
 
-    - name: Set up Python
-      uses: actions/setup-python@v2.2.2
-      with:
-        python-version: 3.x
+      - name: Set up Python
+        uses: actions/setup-python@v2.2.2
+        with:
+          python-version: 3.x
 
-    - name: Download ChromeDriver
-      run: |
-        CHROME_DRIVER_VERSION="113.0.4615.43"  # Update this with the appropriate ChromeDriver version
-        wget -N "https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip"
-        unzip chromedriver_linux64.zip
-        chmod +x chromedriver
-        sudo mv chromedriver /usr/local/bin/
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install webdrivermanager
 
-    - name: Install dependencies
-      run: pip install -r requirements.txt
+      - name: Update ChromeDriver
+        run: |
+          webdrivermanager chrome --linkpath /usr/local/bin
 
-    - name: Run tests
-      run: xvfb-run --auto-servernum --server-args="-screen 0 1024x768x24" pytest --html=report.html
+      - name: Run tests
+        run: xvfb-run --auto-servernum --server-args="-screen 0 1024x768x24" pytest --html=report.html
