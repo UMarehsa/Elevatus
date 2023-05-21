@@ -23,16 +23,16 @@ class GuerrillaMailPage:
 
 class SignupFormPage:
     DRAWER_HANDLE = (By.XPATH, "//div[@class='drawer-handle']")
-    REGISTER_LINK = (By.XPATH, "//a[@href='/register']")
-    NAME_ERROR_MESSAGE = (By.XPATH, "//div[@class='invalid-feedback d-block error-wrapper']")
-    FIRST_NAME_FIELD = (By.XPATH, "//input[@name='firstName']")
-    LAST_NAME_FIELD = (By.XPATH, "//input[@name='lastName']")
-    EMAIL_FIELD = (By.XPATH, "//input[@name='email']")
+    REGISTER_LINK = (By.XPATH, "//button[@class='MuiButtonBase-root btns theme-transparent is-registration-btn mx-2']")
+    NAME_ERROR_MESSAGE = (By.XPATH, "//p[@id='SharedInputControlRef--0---0-0-last_name-helper-text']")
+    FIRST_NAME_FIELD = (By.XPATH, "//input[@id='SharedInputControlRef--0---0-0-first_name']")
+    LAST_NAME_FIELD = (By.XPATH, "//input[@id='SharedInputControlRef--0---0-0-last_name']")
+    EMAIL_FIELD = (By.XPATH, "//input[@id='SharedInputControlRef--0---0-0-email']")
     PASSWORD_FIELD = (By.XPATH, "//input[@name='password']")
     CONFIRM_PASSWORD_FIELD = (By.XPATH, "//input[@name='confirmPassword']")
-    PHONE_FIELD = (By.XPATH, "//input[@class='form-control inputs']")
+    PHONE_FIELD = (By.XPATH, "//input[@id='SharedPhoneControlRef--0---0-0-phone_number']")
     TERMS_CHECKBOX = (By.XPATH, "//label[@class='custom-control-label']")
-    SUBMIT_BUTTON = (By.XPATH, "//button[@type='submit']")
+    SUBMIT_BUTTON = (By.XPATH, "//button[@class='MuiButtonBase-root btns theme-solid']")
     SUCCESS_MESSAGE = (By.XPATH, "//div[@class='react-toast-notifications__toast__content css-1ad3zal']")
     WELCOME_TEXT = (By.XPATH, "//h1[@class='Header__Welcome-sc-oh77jp-2 cEEwhG display-2 font-weight-400']")
 
@@ -160,13 +160,13 @@ class SignupFormPage:
         email_field = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.EMAIL_FIELD))
         email_field.send_keys(email)
 
-        # type password.
-        password_field = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.PASSWORD_FIELD))
-        password_field.send_keys(password)
-
-        # type confirm password value.
-        confirm_password_field = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.CONFIRM_PASSWORD_FIELD))
-        confirm_password_field.send_keys(password)
+        # # type password.
+        # password_field = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.PASSWORD_FIELD))
+        # password_field.send_keys(password)
+        #
+        # # type confirm password value.
+        # confirm_password_field = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.CONFIRM_PASSWORD_FIELD))
+        # confirm_password_field.send_keys(password)
         self.driver.execute_script("window.scrollBy(0, window.innerHeight/2);")
         time.sleep(2)
 
@@ -175,11 +175,13 @@ class SignupFormPage:
         phone_field.send_keys(phone)
 
         # check term checkbox.
-        terms_checkbox = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.TERMS_CHECKBOX))
-        terms_checkbox.click()
+        # terms_checkbox = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.TERMS_CHECKBOX))
+        # terms_checkbox.click()
         submit_button = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.SUBMIT_BUTTON))
         submit_button.click()
-        time.sleep(3)
+        time.sleep(1)
+        drawer_handle = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.DRAWER_HANDLE))
+        drawer_handle.click()
 
         success_message = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.SUCCESS_MESSAGE))
 
@@ -212,8 +214,8 @@ class EmailInboxPage:
 class ApplyForAJob:
 
     DRAWER_HANDLE = (By.XPATH, "//div[@class='drawer-handle']")
-    FILL_MANUALLY = (By.XPATH, "//button[contains(text(),'Fill in manually')]")
-    JOBS = (By.XPATH, "//div[contains(text(),'Jobs')]")
+    CATEGORY = (By.XPATH, "//span[text()='Categories'']")
+    JOBS = (By.XPATH, "//input[@id='tags-outlined']")
     JOB_TITLE = (By.XPATH, "//input[@name='query']")
     CAREER_LEVEL = (By.XPATH, "//input[@id='careerLevel']")
     CAREER_LEVEL_VALUE = (By.XPATH, "//li[@id='careerLevel-option-1']")
@@ -257,8 +259,8 @@ class ApplyForAJob:
     def click_fill_in_manually(self):
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
         self.driver.execute_script("window.scrollBy(0, window.innerHeight/2);")
-        WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(self.FILL_MANUALLY))
-        fill_manually = self.driver.find_element(*self.FILL_MANUALLY)
+        WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(self.CATEGORY))
+        fill_manually = self.driver.find_element(*self.CATEGORY)
         fill_manually.click()
 
     def click_jobs_button(self):
