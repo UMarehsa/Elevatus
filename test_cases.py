@@ -50,33 +50,9 @@ def test_signup(driver):
     success_message = signup_form_page.fill_signup_form(random_first_name, random_last_name, email_address, random_password, random_phone)
 
     assert success_message == "Account Created Successfully"
-    # driver.close()
-    #
-    # # Verify email address received the verification email
-    # driver.switch_to.window(driver.window_handles[0])
-    # driver.get("https://www.guerrillamail.com/inbox")
-    #
-    # # assert that we are on right page.
-    # assert "https://www.guerrillamail.com/inbox" in driver.current_url
-    # driver.refresh()
-    # email_inbox_page.wait_for_email_list()
-    #
-    #
-    #
-    # # open email we received for verification.
-    # email_inbox_page.click_verification_email()
-    #
-    # # click on verification link.
-    # email_inbox_page.click_verification_link()
-    # driver.switch_to.window(driver.window_handles[1])
 
 def test_applyForJob(driver):
     apply_for_job = ApplyForAJob(driver)
-
-
-    # assert that we are on right page.
-    # build_page_message = apply_for_job.buid_profile()
-    # assert build_page_message == "Building your profile"
 
     # click on fill page manually.
     apply_for_job.click_fill_in_manually()
@@ -85,25 +61,9 @@ def test_applyForJob(driver):
     # # Click on job button on dashboad
     apply_for_job.complete_job()
     #
-    # # fill searchbar to find relative job.
-    # apply_for_job.fill_search_form("QA")
-    #
-    # # open job link which we get from search result.
-    # apply_for_job.open_search_results()
-    #
-    # # Click on apply button from job description.
-    # apply_for_job.click_apply_button()
-    #
-    # # assert that we are on submit cv page.
-    # submit_cv_message = apply_for_job.submit_cv_page()
-    # assert submit_cv_message == "Submit Your CV"
-    #
     #
     # # Fill form and submit the application.
     apply_for_job.submit_profile_and_apply()
-    #
-    # # assert applied button is not enabled.
-    # apply_for_job.assert_button_is_disabled()
 
 
 
