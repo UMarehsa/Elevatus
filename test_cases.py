@@ -79,10 +79,11 @@ def test_applyForJob(driver):
     # assert build_page_message == "Building your profile"
 
     # click on fill page manually.
-    # apply_for_job.click_fill_in_manually()
+    apply_for_job.click_fill_in_manually()
     #
+    apply_for_job.select_category()
     # # Click on job button on dashboad
-    # apply_for_job.click_jobs_button()
+    apply_for_job.complete_job()
     #
     # # fill searchbar to find relative job.
     # apply_for_job.fill_search_form("QA")
@@ -99,7 +100,7 @@ def test_applyForJob(driver):
     #
     #
     # # Fill form and submit the application.
-    # apply_for_job.submit_profile_and_apply()
+    apply_for_job.submit_profile_and_apply()
     #
     # # assert applied button is not enabled.
     # apply_for_job.assert_button_is_disabled()

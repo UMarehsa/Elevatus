@@ -214,8 +214,6 @@ class EmailInboxPage:
 class ApplyForAJob:
 
     DRAWER_HANDLE = (By.XPATH, "//div[@class='drawer-handle']")
-    CATEGORY = (By.XPATH, "//span[text()='Categories'']")
-    JOBS = (By.XPATH, "//input[@id='tags-outlined']")
     JOB_TITLE = (By.XPATH, "//input[@name='query']")
     CAREER_LEVEL = (By.XPATH, "//input[@id='careerLevel']")
     CAREER_LEVEL_VALUE = (By.XPATH, "//li[@id='careerLevel-option-1']")
@@ -243,20 +241,44 @@ class ApplyForAJob:
     CV_UPLOAD = (By.XPATH, "//div[@class='col-lg-12']//div//div[@role='button']")
     WILLING_TO_TRAVEL_VALUE = (By.XPATH, "//li[@id='SharedAutocompleteControl--0---0-0-willing_to_travel-option-0']")
     SKILLS_SET = (By.XPATH, "//input[@placeholder='Type your skill here and click on enter to add another skill.']")
-    SUBMIT_AND_APPLY_BUTTON =(By.XPATH, "//span[text()='Submit profile and apply']")
+    SUBMIT_AND_APPLY_BUTTON =(By.XPATH, "//button[@class='MuiButtonBase-root MuiButton-root MuiButton-contained my-4 w-40 text-capitalize mr-2 ml-2  MuiButton-containedPrimary']")
     APPLIED_BUTTON = (By.XPATH, "//button[@class='btn-main ml-sm-auto cursor-not-allowed btn btn-secondary disabled']")
+    CONFIRM_BUTTON =(By.XPATH, "//span[text()='Confirm']")
+
+    #Category in jobs
+    CATEGORY = (By.XPATH, "//span[text()='Categories']")
+    JOBS = (By.XPATH, "//input[@id='tags-outlined']")
+    OPTION =(By.XPATH, "//li[@id='tags-outlined-option-0']")
+    CONTINUE_BUTTON = (By.XPATH, "//button[@class='btn-main my-4 btn btn-secondary']")
+
+    # complete profile
+    COMPLETE_PROFILE =(By.XPATH, "//span[text()='Complete Profile']")
+    GENERAL_DESCRIPTION = (By.XPATH, "//textarea[@id='description']")
 
     def __init__(self, driver):
         self.driver = driver
 
 
-    def buid_profile(self):
+    def select_category(self):
+        jobs = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.JOBS))
+        jobs.click()
+        options = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.OPTION))
+        options.click()
+        time.sleep(3)
+        self.driver.execute_script("window.scrollBy(0, window.innerHeight/2);")
+        time.sleep(2)
+        continue_button = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.CONTINUE_BUTTON))
+        continue_button.click()
+
+    def complete_job(self):
+        complete_job = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.COMPLETE_PROFILE))
+        complete_job.click()
+        general_description = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.GENERAL_DESCRIPTION))
+        general_description.send_keys("This is for testing")
+    def click_fill_in_manually(self):
         drawer_handle = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.DRAWER_HANDLE))
         drawer_handle.click()
-        time.sleep(5)
-        build_profile_page = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.BUILD_PROFILE_PAGE))
-        return build_profile_page.text
-    def click_fill_in_manually(self):
+        time.sleep(10)
         WebDriverWait(self.driver, 5).until(EC.presence_of_element_located((By.TAG_NAME, 'body')))
         self.driver.execute_script("window.scrollBy(0, window.innerHeight/2);")
         WebDriverWait(self.driver, 5).until(EC.visibility_of_element_located(self.CATEGORY))
@@ -325,6 +347,9 @@ class ApplyForAJob:
         gender_button_value.click()
 
         # select nationality from dropdown
+        time.sleep(3)
+        self.driver.execute_script("window.scrollBy(0, window.innerHeight/2);")
+        time.sleep(2)
         nationality_button = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.NATIONALITY_BUTTON))
         nationality_button.click()
         nationality_button_value = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.NATIONALITY_BUTTON_VALUE))
@@ -378,6 +403,9 @@ class ApplyForAJob:
         # click on submit button to submit application.
         submit_apply_button = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.SUBMIT_AND_APPLY_BUTTON))
         submit_apply_button.click()
+        time.sleep(2)
+        confirm_button = WebDriverWait(self.driver, 10).until(EC.visibility_of_element_located(self.CONFIRM_BUTTON))
+        confirm_button.click()
         time.sleep(2)
 
 
